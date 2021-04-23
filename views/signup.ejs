@@ -1,0 +1,56 @@
+  <%- include('./includes/head.ejs') %>
+</head>
+<body>
+  <div id="signup-form" class="auth-form">
+
+    <form action="/auth/signup" method="post" onsubmit="validatePassword(event)">
+
+        <h2 class="text-center">Sign Up</h2>
+        <div class="form-group">
+          <input type="text" class="form-control" id="name" name="name" placeholder="Name" required="required">
+        </div>  
+
+        <div class="form-group">
+            <input type="email" class="form-control" id="email" name="email" placeholder="Email" required="required">
+        </div>
+
+        <div class="form-group">
+          <select name="state" class="form-control" id="state" required>
+            <option value="" selected hidden>Select State</option>
+            <% for(let state of stateList) { %>
+              <option value="<%= state.id %>"><%= state.stateName %></option>
+            <% } %>
+          </select>
+        </div>
+
+        <div class="form-group">
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password" required="required">
+        </div>
+
+        <div class="form-group">
+          <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required="required">
+          <p style="display: none; color: red; font-size: 12px;" id="alert">Both Passwords do not match</p>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary btn-block" id="submit" value="Sign Up">
+        </div> 
+
+    </form>
+
+    <p class="text-center"><a href="/auth/login">Already have an Account? Login!</a></p>
+  </div>
+
+  <script>
+    
+    function validatePassword(event) {
+      const password = document.querySelector('#password').value;
+      const confirmPassword = document.querySelector('#confirmPassword').value;
+      if(password != confirmPassword) {
+        const p = document.querySelector('#alert').style.display = 'block';
+        event.preventDefault();
+      }
+    }
+    
+  </script>
+  <%- include('./includes/tail.ejs') %>

@@ -1,0 +1,493 @@
+{
+	"info": {
+		"_postman_id": "9c74149b-c0a8-4f82-83b7-d60930f151f5",
+		"name": "sequelize_auth_vehicle",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"het@xyz.com\",\r\n    \"password\": 123456\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/auth/login",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Dashboard",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}/auth/dashboard",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"auth",
+								"dashboard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"chahan\",\r\n    \"email\": \"chahan@xyz.com\",\r\n    \"password\": \"123456\",\r\n    \"stateId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/auth/signup",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJFbWFpbCI6Inlhc2hAeHl6LmNvbSIsImlhdCI6MTYxODkwMDA5OCwiZXhwIjoxNjE4OTAwMTU4fQ.D4e_9kE4UIIptPIXZB4hIY1gP_zNHM4qs8WhhXicGIE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Yash1\",\r\n    \"email\": \"yash@xyz.com\",\r\n    \"password\": \"123456\",\r\n    \"stateId\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/user/update/id/:id",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"user",
+								"update",
+								"id",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJFbWFpbCI6Inlhc2hAeHl6LmNvbSIsImlhdCI6MTYxODkwMDA5OCwiZXhwIjoxNjE4OTAwMTU4fQ.D4e_9kE4UIIptPIXZB4hIY1gP_zNHM4qs8WhhXicGIE",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}/user/delete/id/:id",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"user",
+								"delete",
+								"id",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "7"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Vehicle",
+			"item": [
+				{
+					"name": "Create Vehicle",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJFbWFpbCI6Inlhc2hAeHl6LmNvbSIsImlhdCI6MTYxODkwNjYyNywiZXhwIjoxNjE4OTA2NzQ3fQ.IVd-I7mYHgnxuQ6rDm7AI8d0-Zj7gehyD2cp89kPbxs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Apache 160RTR\",\r\n    \"type\": \"Sports bike\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/vehicle/create",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"vehicle",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update vehicle",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJFbWFpbCI6Inlhc2hAeHl6LmNvbSIsImlhdCI6MTYxODkwNjYyNywiZXhwIjoxNjE4OTA2NzQ3fQ.IVd-I7mYHgnxuQ6rDm7AI8d0-Zj7gehyD2cp89kPbxs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"FZS-v3\",\r\n    \"type\": \"sports bike\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/vehicle/update/id/2",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"vehicle",
+								"update",
+								"id",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Vehicle",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJFbWFpbCI6Inlhc2hAeHl6LmNvbSIsImlhdCI6MTYxODkwNjYyNywiZXhwIjoxNjE4OTA2NzQ3fQ.IVd-I7mYHgnxuQ6rDm7AI8d0-Zj7gehyD2cp89kPbxs",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}/vehicle/delete/id/3",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"vehicle",
+								"delete",
+								"id",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Vehicle Registration",
+			"item": [
+				{
+					"name": "Register Vehicle",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJFbWFpbCI6Inlhc2hAeHl6LmNvbSIsImlhdCI6MTYxODkxNjY1OSwiZXhwIjoxNjE4OTE2Nzc5fQ.Ao5Y9mWzMYUnTJHIpG1rQBjdmRbkY1Z86TCGqZQEfIg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"expiryDate\": \"2041-04-19\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/vehicleRegistration/create/:vehicleId",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"vehicleRegistration",
+								"create",
+								":vehicleId"
+							],
+							"variable": [
+								{
+									"key": "vehicleId",
+									"value": "7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Registration",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"expiryDate\": \"2053-04-19\",\r\n    \"userId\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/vehicleRegistration/update/id/:registrationId",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"vehicleRegistration",
+								"update",
+								"id",
+								":registrationId"
+							],
+							"variable": [
+								{
+									"key": "registrationId",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Registration",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}/vehicleRegistration/delete/id/:registrationId",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"vehicleRegistration",
+								"delete",
+								"id",
+								":registrationId"
+							],
+							"variable": [
+								{
+									"key": "registrationId",
+									"value": "7"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "APIs",
+			"item": [
+				{
+					"name": "User Data List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/userData",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"userData"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Target User Data",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/targetUserData/:id",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"targetUserData",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Target State Data",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/stateDataById/:id",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"stateDataById",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CSV Generation",
+			"item": [
+				{
+					"name": "Create CSV",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/csv/create",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"csv",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
