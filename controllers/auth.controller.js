@@ -1,8 +1,6 @@
-const jwt = require('jsonwebtoken');
-require('dotenv').config();
-
 const { User } = require('../models/user.js');
 const { responseObj } = require('../helpers/response.js');
+const { createToken } = require('../helpers/createToken.js');
 const { VehicleRegistration } = require('../models/vehicleRegistration.js');
 const { Vehicle } = require('../models/vehicle.js');
 const { State } = require('../models/state.js');
@@ -62,7 +60,7 @@ exports.postLogin = async (req, res, next) => {
       return res.status(404).json(responseObj(401, false, 'Incorrect email or password'));
     }
 
-    const token = jwt.sign({ userId: user.id, userEmail: user.email }, process.env.JWT_SECRET, { expiresIn: 2*60 });
+    const token = createToken({ userId: user.id, userEmail: user.email }, 2*60);
     res.cookie('jwt', token, {maxAge: 2*60*1000, httpOnly: true});
     user.accessToken = token;
     const result = await user.save();
