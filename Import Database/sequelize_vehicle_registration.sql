@@ -56,12 +56,13 @@ CREATE TABLE `users` (
   `email` varchar(65) NOT NULL,
   `password` varchar(100) NOT NULL,
   `status` tinyint(1) DEFAULT '1',
+  `accessToken` varchar(255) DEFAULT NULL,
   `stateId` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`),
   KEY `stateId` (`stateId`),
   CONSTRAINT `users_ibfk_1` FOREIGN KEY (`stateId`) REFERENCES `states` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,7 +71,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Yash','yash@xyz.com','123456',1,1),(2,'het','het@xyz.com','123456',1,2),(8,'parv','parv@xyz.com','123456',1,3),(12,'Devarshi','dev@xyz.com','12345',1,5),(13,'Harshal','harshal@xyz.com','123456',1,8);
+INSERT INTO `users` VALUES (1,'yash','yash@xyz.com','123456',1,NULL,1),(2,'het','het@xyz.com','123456',1,'',2),(3,'dev','dev@xyz.com','123456',1,'',3),(4,'parv','parv@xyz.com','123456',1,NULL,1);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -92,7 +93,7 @@ CREATE TABLE `vehicleregistrations` (
   KEY `vehicleId` (`vehicleId`),
   CONSTRAINT `vehicleregistrations_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `vehicleregistrations_ibfk_2` FOREIGN KEY (`vehicleId`) REFERENCES `vehicles` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -101,7 +102,7 @@ CREATE TABLE `vehicleregistrations` (
 
 LOCK TABLES `vehicleregistrations` WRITE;
 /*!40000 ALTER TABLE `vehicleregistrations` DISABLE KEYS */;
-INSERT INTO `vehicleregistrations` VALUES (1,'2021-04-21 09:36:21','2041-04-19 00:00:00',1,1),(3,'2021-04-22 06:06:58','2051-04-19 00:00:00',1,2),(4,'2021-04-22 09:35:06','2041-04-19 00:00:00',2,3),(5,'2021-04-22 09:35:48','2041-04-19 00:00:00',2,4),(8,'2021-04-22 09:50:23','2041-04-19 00:00:00',2,5),(9,'2021-04-23 04:55:44','2041-04-19 00:00:00',2,7);
+INSERT INTO `vehicleregistrations` VALUES (1,'2021-04-26 05:55:51','2041-04-19 00:00:00',1,1),(2,'2021-04-26 05:56:04','2040-04-29 00:00:00',1,2),(3,'2021-04-26 05:56:52','2050-04-29 00:00:00',2,3),(4,'2021-04-26 05:57:02','2052-04-19 00:00:00',2,4);
 /*!40000 ALTER TABLE `vehicleregistrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -118,7 +119,7 @@ CREATE TABLE `vehicles` (
   `type` varchar(15) NOT NULL,
   `registered` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -127,7 +128,7 @@ CREATE TABLE `vehicles` (
 
 LOCK TABLES `vehicles` WRITE;
 /*!40000 ALTER TABLE `vehicles` DISABLE KEYS */;
-INSERT INTO `vehicles` VALUES (1,'Shine CB','Commuter Bike',1),(2,'FZS-v3','sports bike',1),(3,'Aviator','mopad',1),(4,'RS200','sports bike',1),(5,'Avenger 225','Cruise bike',1),(6,'Apache 160RTR','Sports bike',0),(7,'Apache 160RTR','Sports bike',1),(8,'Apache xyz','Sports bike',0);
+INSERT INTO `vehicles` VALUES (1,'Apache xyz','Sports bike',1),(2,'FZS V3','Sports bike',1),(3,'CB Shine','Commuter bike',1),(4,'Activa 6G','Mopad',1),(5,'Aviator','Mopad',0),(6,'Access','Mopad',0),(7,'RS200','Sports bike',0);
 /*!40000 ALTER TABLE `vehicles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -148,4 +149,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-04-23 11:15:22
+-- Dump completed on 2021-04-26 11:34:54

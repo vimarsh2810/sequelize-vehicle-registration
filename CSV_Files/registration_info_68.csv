@@ -1,0 +1,5 @@
+"name","email","vehicleId","vehicleName","registrationDate","expiryDate"
+"yash","yash@xyz.com",1,"Apache xyz","2021-04-26T05:55:51.000Z","2041-04-19T00:00:00.000Z"
+"yash","yash@xyz.com",2,"FZS V3","2021-04-26T05:56:04.000Z","2040-04-29T00:00:00.000Z"
+"het","het@xyz.com",3,"CB Shine","2021-04-26T05:56:52.000Z","2050-04-29T00:00:00.000Z"
+"het","het@xyz.com",4,"Activa 6G","2021-04-26T05:57:02.000Z","2052-04-19T00:00:00.000Z"

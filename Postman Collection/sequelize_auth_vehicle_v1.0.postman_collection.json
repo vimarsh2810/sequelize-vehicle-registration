@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "9c74149b-c0a8-4f82-83b7-d60930f151f5",
-		"name": "sequelize_auth_vehicle",
+		"name": "sequelize_auth_vehicle_v1.0",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -22,7 +22,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"het@xyz.com\",\r\n    \"password\": 123456\r\n}",
+							"raw": "{\r\n    \"email\": \"yash@xyz.com\",\r\n    \"password\": 123456\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -74,7 +74,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"chahan\",\r\n    \"email\": \"chahan@xyz.com\",\r\n    \"password\": \"123456\",\r\n    \"stateId\": 1\r\n}",
+							"raw": "{\r\n    \"name\": \"parv\",\r\n    \"email\": \"parv@xyz.com\",\r\n    \"password\": \"123456\",\r\n    \"state\": 1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -89,6 +89,24 @@
 							"path": [
 								"auth",
 								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/auth/logout",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"auth",
+								"logout"
 							]
 						}
 					},
@@ -190,7 +208,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Apache 160RTR\",\r\n    \"type\": \"Sports bike\"\r\n}",
+							"raw": "{\r\n    \"name\": \"Access\",\r\n    \"type\": \"Mopad\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
