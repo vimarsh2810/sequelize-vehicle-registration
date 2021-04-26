@@ -1,3 +1,5 @@
+const bcrypt = require('bcryptjs');
+
 const { User } = require('../models/user.js');
 const { responseObj } = require('../helpers/response.js');
 const { createToken } = require('../helpers/createToken.js');
@@ -25,10 +27,11 @@ exports.postSignup = async (req, res, next) => {
   const userDetails = req.body;
   try {
 
+    const hashedPW = bcrypt.hashSync(userDetails.password, 12);
     const user = await User.create({
       name: userDetails.name,
       email: userDetails.email,
-      password: userDetails.password,
+      password: hashedPW,
       stateId: userDetails.state,
       status: true
     });
@@ -56,15 +59,16 @@ exports.postLogin = async (req, res, next) => {
       return res.status(404).json(responseObj(404, false, 'User not registered'));
     }
 
-    if(password != user.password) {
-      return res.status(404).json(responseObj(401, false, 'Incorrect email or password'));
+    const result = bcrypt.compareSync(password, user.password);
+    if(result) {
+      const token = createToken({ userId: user.id, userEmail: user.email }, 2*60); // pass 1 or 2 mins to check token expiry
+      res.cookie('jwt', token, {maxAge: 2*60*1000, httpOnly: true});
+      user.accessToken = token;
+      const result = await user.save();
+      res.redirect('/auth/dashboard');
     }
 
-    const token = createToken({ userId: user.id, userEmail: user.email }, 2*60);
-    res.cookie('jwt', token, {maxAge: 2*60*1000, httpOnly: true});
-    user.accessToken = token;
-    const result = await user.save();
-    res.redirect('/auth/dashboard');
+    return res.status(401).json(responseObj(401, false, 'Incorrect Email or Password'));
     
   } catch (error) {
     return res.status(500).json(responseObj(500, false, error.message));
