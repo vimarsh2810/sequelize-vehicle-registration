@@ -26,6 +26,10 @@ const User = sequelize.define('user', {
   status: {
     type: Sequelize.BOOLEAN,
     defaultValue: true
+  },
+  accessToken: {
+    type: Sequelize.STRING,
+    allowNull: true
   }
 }, { timestamps: false });
 

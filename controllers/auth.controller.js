@@ -64,6 +64,8 @@ exports.postLogin = async (req, res, next) => {
 
     const token = jwt.sign({ userId: user.id, userEmail: user.email }, process.env.JWT_SECRET, { expiresIn: 2*60 });
     res.cookie('jwt', token, {maxAge: 2*60*1000, httpOnly: true});
+    user.accessToken = token;
+    const result = await user.save();
     res.redirect('/auth/dashboard');
     
   } catch (error) {
@@ -72,9 +74,17 @@ exports.postLogin = async (req, res, next) => {
 };
 
 // Logging user out
-exports.getLogout = (req, res, next) => {
-  res.cookie('jwt', '', { maxAge: 1 });
-  res.redirect('/auth/login');
+exports.getLogout = async (req, res, next) => {
+  try {
+    const userData = req.userData;
+    const user = await User.findByPk(userData.userId);
+    user.accessToken = null;
+    const result = await user.save();
+    res.cookie('jwt', '', { maxAge: 1 });
+    res.redirect('/auth/login');
+  } catch (error) {
+    return res.status(500).json(responseObj(500, false, error.message));
+  }
 }
 
 // Dashboard page - redirect after successfull login
