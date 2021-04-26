@@ -1,12 +1,14 @@
 const { User } = require('../models/user.js');
 const { responseObj } = require('../helpers/response.js');
 
+const bcrypt = require('bcryptjs');
+
 // Update a User Info
 exports.updateUser = async (req, res, next) => {
   const id = req.params.id;
   const userDetails = req.body;
   try {
-
+    const hashedPW = bcrypt.hashSync(userDetails.password, 12);
     const user = await User.findByPk(id);
     if(!user) {
       return res.status(404).json(responseObj(404, false, `User with id = ${id} not found`));
@@ -14,7 +16,7 @@ exports.updateUser = async (req, res, next) => {
 
     user.name = userDetails.name;
     user.email = userDetails.email;
-    user.password = userDetails.password;
+    user.password = hashedPW;
     user.stateId = userDetails.stateId;
 
     user.save()
